@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">PGD</string>
+    <string name="title_pie_list">Pies</string>
+    <string name="title_pie_detail">Pie Detail</string>
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+    <string name="reset">RESET</string>
+
+    <string name="home_text"> Discover and connect device available in your network! </string>
+    <string name="no_device"> There is no any required device in the network </string>
+    <string name="search_device"> Search devices </string>
+
+    <string name="slide_1_title">Hello PiGrid Users!</string>
+    <string name="slide_1_desc">This app is the easiest way to discover pi devices in the wifi network and connect with them !</string>
+
+    <string name="slide_2_title">Connect</string>
+    <string name="slide_2_desc">Connect any pi devices from the list of available pi devices!</string>
+
+    <string name="slide_3_title">Settings</string>
+    <string name="slide_3_desc">Discover pi device connected in the wifi network! \n To see the welcome slider again, goto Settings -> reset </string>
+
+    <string name="slide_4_title">Help</string>
+    <string name="slide_4_desc">You can reset the app data any time!</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="back"> Back </string>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="reset_message"> Use the button below to reset this app. By resetting this app you will be able to see the Welcome slider message again</string>
+</resources>
