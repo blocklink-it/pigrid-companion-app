@@ -25,6 +25,7 @@
         </activity>
         <activity
             android:name=".WelcomeActivity"
+            android:noHistory="true"
             android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".MainActivity"
@@ -35,7 +36,7 @@
             android:label="@string/title_pie_list"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".PieDetailActivity"
+            android:name=".WebViewActivity"
             android:label="@string/title_pie_detail"
             android:parentActivityName=".PieListActivity"
             android:theme="@style/AppTheme.NoActionBar">

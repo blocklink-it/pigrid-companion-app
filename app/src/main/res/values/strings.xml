@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">PGD</string>
     <string name="title_pie_list">Pies</string>
-    <string name="title_pie_detail">Pie Detail</string>
+    <string name="title_pie_detail">Pgd</string>
 
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
@@ -24,7 +24,7 @@
     <string name="slide_4_title">Help</string>
     <string name="slide_4_desc">You can reset the app data any time!</string>
 
-    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="title_activity_fullscreen">Pie Detail</string>
     <string name="back"> Back </string>
 
     <string name="title_activity_main">MainActivity</string>
@@ -35,6 +35,6 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-
+    <string name="no_data_available">No Pi Devices Found on Your Wifi Network. Please click search button again to rescan the wifi</string>
     <string name="reset_message"> Use the button below to reset this app. By resetting this app you will be able to see the Welcome slider message again</string>
 </resources>

@@ -9,7 +9,11 @@ public class ConnectionHelper {
     public static boolean isWiFiConnected(Context mContext){
         ConnectivityManager cm = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        boolean isWiFi = activeNetwork.getType() == ConnectivityManager.TYPE_WIFI;
-        return isWiFi;
+        boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+        if(isConnected){
+            boolean isWiFi = activeNetwork.getType() == ConnectivityManager.TYPE_WIFI;
+            return isWiFi;
+        }
+        return isConnected;
     }
 }

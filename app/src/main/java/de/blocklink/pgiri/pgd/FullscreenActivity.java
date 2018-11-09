@@ -1,16 +1,22 @@
 package de.blocklink.pgiri.pgd;
 
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.widget.Button;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -34,10 +40,13 @@ public class FullscreenActivity extends AppCompatActivity {
      * and a change of the status and navigation bar.
      */
     private static final int UI_ANIMATION_DELAY = 300;
+    public static final String URL = "url";
+
     private final Handler mHideHandler = new Handler();
     private View mContentView;
     private WebView myWebView;
-    public static final String URL = "url";
+    private ProgressBar pd;
+
 
 
     private final Runnable mHidePart2Runnable = new Runnable() {
@@ -100,6 +109,8 @@ public class FullscreenActivity extends AppCompatActivity {
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.webView);
+        pd = findViewById(R.id.progressBar);
+        pd.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
         myWebView = (WebView) mContentView;
         Button btnBack = findViewById(R.id.btnBack);
 
@@ -183,8 +194,13 @@ public class FullscreenActivity extends AppCompatActivity {
         if(url != null){
             WebSettings webSettings = myWebView.getSettings();
             webSettings.setJavaScriptEnabled(true);
+            webSettings.setLoadWithOverviewMode(true);
+            webSettings.setUseWideViewPort(true);
+            webSettings.setBuiltInZoomControls(true);
+
             myWebView.setWebViewClient(new FullscreenActivity.WebViewController());
             myWebView.loadUrl(url);
+
         }
     }
 
@@ -194,6 +210,19 @@ public class FullscreenActivity extends AppCompatActivity {
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             view.loadUrl(url);
             return true;
+        }
+
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            pd.setVisibility(View.VISIBLE);
+        }
+
+        public void onPageFinished(WebView view, String url) {
+            pd.setVisibility(View.GONE);
+        }
+
+        public void onReceivedError (WebView view, WebResourceRequest request, WebResourceError error){
+            pd.setVisibility(View.GONE);
+            Toast.makeText(FullscreenActivity.this, "Error occurred while loading the page!!", Toast.LENGTH_LONG).show();
         }
     }
 }

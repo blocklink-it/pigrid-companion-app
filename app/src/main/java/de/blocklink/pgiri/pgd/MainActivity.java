@@ -23,12 +23,23 @@ import de.blocklink.pgiri.pgd.Helper.UrlHelper;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    NavigationView  navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -37,15 +48,6 @@ public class MainActivity extends AppCompatActivity
                 displaySelectedMenuPage(R.id.discoverPi);
             }
         });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
         displaySelectedMenuPage(R.id.discoverPi);
     }
@@ -96,15 +98,16 @@ public class MainActivity extends AppCompatActivity
 
     private void displaySelectedMenuPage(int menuId) {
         Fragment fragment = null;
-        Bundle bundle = new Bundle();
 
         if (menuId == R.id.discoverPi) {
+            navigationView.getMenu().getItem(0).setChecked(true);
             fragment = new PieListFragment();
+
         } else if (menuId == R.id.help) {
-            callFullScreenActivity(UrlHelper.helpUrl);
+            callWebView(UrlHelper.helpUrl);
+            return;
         } else if (menuId == R.id.settings) {
             fragment = new SettingFragment();
-
         } else if (menuId == R.id.fb) {
 
         } else if (menuId == R.id.twitter) {
@@ -121,9 +124,13 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
     }
 
-    private void callFullScreenActivity(String url){
-        Intent intent = new Intent(this, FullscreenActivity.class);
-        intent.putExtra(FullscreenActivity.URL, url);
+    private void callWebView(String url){
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+
+        Intent intent = new Intent(this, WebViewActivity.class);
+        intent.putExtra(WebViewActivity.ARG_URL, url);
         startActivity(intent);
     }
 }

@@ -8,13 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import java.util.List;
-import de.blocklink.pgiri.pgd.PieDetailActivity;
+
+import de.blocklink.pgiri.pgd.FullscreenActivity;
 import de.blocklink.pgiri.pgd.R;
 
 public  class SimpleItemRecyclerViewAdapter
         extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-    private final List<PieItem> pies;
+    private List<PieItem> pies;
 
     private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
@@ -22,13 +23,17 @@ public  class SimpleItemRecyclerViewAdapter
             PieItem item = (PieItem) view.getTag();
 
             Context context = view.getContext();
-            Intent intent = new Intent(context, PieDetailActivity.class);
-            intent.putExtra(PieDetailActivity.ARG_ITEM_ID, item.location);
+            Intent intent = new Intent(context, FullscreenActivity.class);
+            intent.putExtra(FullscreenActivity.URL, item.location);
             context.startActivity(intent);
         }
     };
 
     public SimpleItemRecyclerViewAdapter(List<PieItem> items) {
+        pies = items;
+    }
+    public void setData(List<PieItem> items)
+    {
         pies = items;
     }
 
