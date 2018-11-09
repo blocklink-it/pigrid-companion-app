@@ -1,7 +1,12 @@
 package de.blocklink.pgiri.pgd.Fragment;
 
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -34,8 +39,6 @@ import io.resourcepool.ssdp.model.SsdpServiceAnnouncement;
  */
 public class PieListFragment extends Fragment {
 
-
-    // TODO: Customize parameters
     private int mColumnCount = 1;
 
     private int TIME_OUT_NO_PIE = 60000;
@@ -44,10 +47,13 @@ public class PieListFragment extends Fragment {
     List<PieItem> pieItems = null;
     SimpleItemRecyclerViewAdapter myAdapter;
     SsdpClient client;
+    private ProgressDialog pd;
+    private ConnectivityChangeReceiver connectivityChangeReceiver = null;
+    private boolean firstLoad = true;
 
     RecyclerView recyclerView;
     TextView emptyView;
-    private ProgressDialog pd;
+
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -76,7 +82,6 @@ public class PieListFragment extends Fragment {
         }
 
         pd = ProgressDialog.show(context, "PGD", "Looking for pi..", true);
-
         myAdapter = new SimpleItemRecyclerViewAdapter(pieItems);
         recyclerView.setAdapter(myAdapter);
         setupPieDiscovery();
@@ -86,16 +91,17 @@ public class PieListFragment extends Fragment {
 
     private void setupPieDiscovery() {
         if (ConnectionHelper.isWiFiConnected(getActivity())) {
+            pd.show();
             if (client != null) {
                 client.stopDiscovery();
             }
-            displayNoPieFound(TIME_OUT_NO_PIE);
+            hideShowNoPieFound(TIME_OUT_NO_PIE);
             discoverPies();
         } else {
             pd.dismiss();
             Toast.makeText(getActivity(), "Connect your device to the wifi network to discover the Pi and click the search button", Toast.LENGTH_LONG).show();
             ConnectionHelper.enableWifi(getActivity());
-            displayNoPieFound(TIME_OUT_NO_PIE_SHORT);
+            hideShowNoPieFound(TIME_OUT_NO_PIE_SHORT);
         }
     }
 
@@ -120,6 +126,7 @@ public class PieListFragment extends Fragment {
                         myAdapter.setData(pieItems);
                         myAdapter.notifyDataSetChanged();
                         pd.dismiss();
+                        hideShowNoPieFound(TIME_OUT_NO_PIE_SHORT);
                     }
                 });
             }
@@ -137,7 +144,7 @@ public class PieListFragment extends Fragment {
         });
     }
 
-    private void displayNoPieFound(int timeOut) {
+    private void hideShowNoPieFound(int timeOut) {
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -157,12 +164,21 @@ public class PieListFragment extends Fragment {
         }, timeOut);
     }
 
+    private void clearPieListView() {
+        pieItems = null;
+        myAdapter.setData(pieItems);
+        myAdapter.notifyDataSetChanged();
+        hideShowNoPieFound(TIME_OUT_NO_PIE_SHORT);
+    }
+
     @Override
-    public void onDetach() {
-        super.onDetach();
-        if (client != null) {
-            client.stopDiscovery();
-        }
+    public void onStart() {
+        super.onStart();
+
+        connectivityChangeReceiver = new ConnectivityChangeReceiver();
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        intentFilter.setPriority(100);
+        getActivity().registerReceiver(connectivityChangeReceiver, intentFilter);
     }
 
     @Override
@@ -173,4 +189,47 @@ public class PieListFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (connectivityChangeReceiver != null) {
+            getActivity().unregisterReceiver(connectivityChangeReceiver);
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (client != null) {
+            client.stopDiscovery();
+        }
+    }
+
+
+    public class ConnectivityChangeReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int status = ConnectionHelper.getConnectivityStatusString(context);
+            switch (status) {
+                case ConnectionHelper.NETWORK_STATUS_NOT_CONNECTED:
+                    Toast.makeText(getActivity(), "Device Wifi connection lost", Toast.LENGTH_LONG).show();
+                    clearPieListView();
+                    break;
+                case ConnectionHelper.NETWORK_STATUS_WIFI:
+                    if (!firstLoad) {
+                        setupPieDiscovery();
+                        Toast.makeText(getActivity(), "Device connected to the wifi network", Toast.LENGTH_LONG).show();
+                    }
+                    firstLoad = false;
+                    break;
+
+                case ConnectionHelper.NETWORK_STATUS_MOBILE:
+                    Toast.makeText(getActivity(), "Device connected to the mobile network. Please connect to the wifi network to discover the Pie", Toast.LENGTH_LONG).show();
+                    clearPieListView();
+                    break;
+            }
+        }
+    }
+
+    ;
 }
