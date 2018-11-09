@@ -93,7 +93,8 @@ public class PieListFragment extends Fragment {
             discoverPies();
         } else {
             pd.dismiss();
-            Toast.makeText(getActivity(), "Connect your device to the wifi network to discover the Pie", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Connect your device to the wifi network to discover the Pi and click the search button", Toast.LENGTH_LONG).show();
+            ConnectionHelper.enableWifi(getActivity());
             displayNoPieFound(TIME_OUT_NO_PIE_SHORT);
         }
     }

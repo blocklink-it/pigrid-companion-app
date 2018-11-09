@@ -3,6 +3,7 @@ package de.blocklink.pgiri.pgd.Helper;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.wifi.WifiManager;
 
 public class ConnectionHelper {
 
@@ -15,5 +16,10 @@ public class ConnectionHelper {
             return isWiFi;
         }
         return isConnected;
+    }
+
+    public static void enableWifi(Context mContext){
+        WifiManager wifi = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
+        wifi.setWifiEnabled(true);
     }
 }
