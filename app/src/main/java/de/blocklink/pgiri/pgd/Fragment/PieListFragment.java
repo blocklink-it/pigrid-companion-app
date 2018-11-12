@@ -41,8 +41,8 @@ public class PieListFragment extends Fragment {
 
     private int mColumnCount = 1;
 
-    private int TIME_OUT_NO_PIE = 60000;
-    private int TIME_OUT_NO_PIE_SHORT = 100;
+    private int TIME_OUT_NO_PIE = 60000; // 1 minute
+    private int TIME_OUT_NO_PIE_SHORT = 100; // 100ms
 
     List<PieItem> pieItems = null;
     SimpleItemRecyclerViewAdapter myAdapter;
@@ -66,6 +66,10 @@ public class PieListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        connectivityChangeReceiver = new ConnectivityChangeReceiver();
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        intentFilter.setPriority(100);
+        getActivity().registerReceiver(connectivityChangeReceiver, intentFilter);
     }
 
     @Override
@@ -172,16 +176,6 @@ public class PieListFragment extends Fragment {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-
-        connectivityChangeReceiver = new ConnectivityChangeReceiver();
-        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        intentFilter.setPriority(100);
-        getActivity().registerReceiver(connectivityChangeReceiver, intentFilter);
-    }
-
-    @Override
     public void onStop() {
         super.onStop();
         if (client != null) {
@@ -190,18 +184,14 @@ public class PieListFragment extends Fragment {
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-        if (connectivityChangeReceiver != null) {
-            getActivity().unregisterReceiver(connectivityChangeReceiver);
-        }
-    }
-
-    @Override
     public void onDetach() {
         super.onDetach();
         if (client != null) {
             client.stopDiscovery();
+        }
+
+        if (connectivityChangeReceiver != null) {
+            getActivity().unregisterReceiver(connectivityChangeReceiver);
         }
     }
 
