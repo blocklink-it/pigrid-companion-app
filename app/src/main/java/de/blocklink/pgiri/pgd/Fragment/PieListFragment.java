@@ -41,7 +41,7 @@ public class PieListFragment extends Fragment {
 
     private int mColumnCount = 1;
 
-    private int TIME_OUT_NO_PIE = 60000; // 1 minute
+    private int TIME_OUT_NO_PIE = 30000; // 0.5 minute
     private int TIME_OUT_NO_PIE_SHORT = 100; // 100ms
 
     List<PieItem> pieItems = null;
@@ -139,6 +139,7 @@ public class PieListFragment extends Fragment {
             public void onFailed(Exception ex) {
                 System.out.println("Failed service: " + ex);
                 pd.dismiss();
+                Toast.makeText(getActivity(), "Something went wrong when searching for the pie.", Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -157,7 +158,7 @@ public class PieListFragment extends Fragment {
                 if (pd.isShowing()) {
                     pd.dismiss();
                 }
-                if (pieItems == null) {
+                if (pieItems == null || pieItems.isEmpty()) {
                     recyclerView.setVisibility(View.GONE);
                     emptyView.setVisibility(View.VISIBLE);
                 } else {

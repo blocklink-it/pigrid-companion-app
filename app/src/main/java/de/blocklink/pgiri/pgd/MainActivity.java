@@ -23,7 +23,7 @@ import de.blocklink.pgiri.pgd.Helper.UrlHelper;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    NavigationView  navigationView;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +106,9 @@ public class MainActivity extends AppCompatActivity
         } else if (menuId == R.id.help) {
             callWebView(UrlHelper.helpUrl);
             return;
+        } else if (menuId == R.id.about) {
+            callWebView(UrlHelper.aboutUrl);
+            return;
         } else if (menuId == R.id.settings) {
             fragment = new SettingFragment();
         } else if (menuId == R.id.fb) {
@@ -124,7 +127,7 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
     }
 
-    private void callWebView(String url){
+    private void callWebView(String url) {
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

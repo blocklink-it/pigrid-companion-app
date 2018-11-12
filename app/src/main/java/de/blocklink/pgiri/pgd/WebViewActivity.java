@@ -61,6 +61,8 @@ public class WebViewActivity extends AppCompatActivity {
             webSettings.setLoadWithOverviewMode(true);
             webSettings.setUseWideViewPort(true);
             webSettings.setBuiltInZoomControls(true);
+            webSettings.setDisplayZoomControls(false);
+
             myWebView.setWebViewClient(new WebViewActivity.WebViewController());
             myWebView.loadUrl(piIP);
         }
