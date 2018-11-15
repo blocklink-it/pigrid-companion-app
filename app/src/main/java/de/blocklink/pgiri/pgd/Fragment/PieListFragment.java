@@ -3,6 +3,7 @@ package de.blocklink.pgiri.pgd.Fragment;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -84,13 +85,30 @@ public class PieListFragment extends Fragment {
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
-
-        pd = ProgressDialog.show(context, "PGD", "Looking for pi..", true);
+        setupProgressDialog();
         myAdapter = new SimpleItemRecyclerViewAdapter(pieItems);
         recyclerView.setAdapter(myAdapter);
         setupPieDiscovery();
 
         return view;
+    }
+
+    private void setupProgressDialog() {
+        pd = new ProgressDialog(getActivity());
+        pd.setTitle("PGD");
+        pd.setMessage("Looking for Pie...");
+        pd.setCancelable(false);
+        pd.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (client != null) {
+                    client.stopDiscovery();
+                }
+                pd.dismiss();
+                hideShowNoPieFound(TIME_OUT_NO_PIE_SHORT);
+            }
+        });
+        pd.show();
     }
 
     private void setupPieDiscovery() {
