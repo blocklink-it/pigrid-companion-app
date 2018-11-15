@@ -94,7 +94,7 @@ public class PieListFragment extends Fragment {
     }
 
     private void setupProgressDialog() {
-        pd = new ProgressDialog(getActivity());
+        pd = new ProgressDialog(getActivity(), R.style.CustomAlertDialogStyle);
         pd.setTitle("PGD");
         pd.setMessage("Looking for Pie...");
         pd.setCancelable(false);
