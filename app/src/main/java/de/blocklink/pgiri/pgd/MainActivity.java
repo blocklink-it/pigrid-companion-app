@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import de.blocklink.pgiri.pgd.Fragment.AboutFragment;
 import de.blocklink.pgiri.pgd.Fragment.PieListFragment;
 import de.blocklink.pgiri.pgd.Fragment.SettingFragment;
 import de.blocklink.pgiri.pgd.Helper.PrefManager;
@@ -110,15 +111,13 @@ public class MainActivity extends AppCompatActivity
             callWebView(UrlHelper.helpUrl);
             return;
         } else if (menuId == R.id.about) {
-            callWebView(UrlHelper.aboutUrl);
-            return;
+            fragment = new AboutFragment();
         } else if (menuId == R.id.settings) {
             fragment = new SettingFragment();
         } else if (menuId == R.id.appHelp) {
             prefManager.setHomeBackBtnPressed(true);
             Intent intent = new Intent(this, WelcomeActivity.class);
             startActivity(intent);
-            finish();
         }
 
         if (fragment != null) {
@@ -139,5 +138,9 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(this, WebViewActivity.class);
         intent.putExtra(WebViewActivity.ARG_URL, url);
         startActivity(intent);
+    }
+
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
     }
 }

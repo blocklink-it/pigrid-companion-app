@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import de.blocklink.pgiri.pgd.Helper.PrefManager;
+import de.blocklink.pgiri.pgd.MainActivity;
 import de.blocklink.pgiri.pgd.R;
 
 public class SettingFragment extends Fragment {
@@ -51,6 +52,12 @@ public class SettingFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+    }
+
+    public void onResume(){
+        super.onResume();
+        // Set title bar
+        ((MainActivity) getActivity()).setActionBarTitle("Settings");
     }
 
     @Override

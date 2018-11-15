@@ -24,7 +24,7 @@
     <dimen name="nav_header_height">176dp</dimen>
 
     <dimen name="margin_left_right">10dp</dimen>
-    <dimen name="margin_web_view">1dp</dimen>
+    <dimen name="margin_text">10dp</dimen>
 
 
 </resources>

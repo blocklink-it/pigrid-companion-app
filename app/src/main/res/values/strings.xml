@@ -38,9 +38,16 @@
     <string name="no_data_available">No Pi Devices Found on Your Wifi Network. Please click search button again to rescan the wifi</string>
     <string name="reset_message"> Use the button below to reset this app. By resetting this app you will be able to see the Welcome slider message again</string>
 
-    <string name="what_pi"> What is PiGrid? </string>
-    <string name="about_text">Our PiGrid software was developed to enable easy access to the world of the virtual currency Gridcoin and the open-source research platform BOINC.
-        It combines the features of a Gridcoin wallet and a BOINC client. As an all-in-one solution, it will take care of handling your cryptocurrency assets and at the same time
-        enable you to participate in international research and distributed computing projects. Use our PiGrid Software on your Raspberry Pi to become a paid home-based researcher
-        and cryptocurrency user. <b> Please expect that the current release is a public alpha version that can be upgraded to a full version once available.</b></string>
+    <string name="version"> Version:  1.0 </string>
+    <string name="about_text">Developed By: \n blocklink AG\n Universitätsstr. 3, 56070 Koblenz \n Phone: +49 (0) 159 02283941\n Email: info@blocklink.de \nWebsite: blocklink.de</string>
+
+    <string name="about_app_text"> PiGrid software was developed to enable easy access to the world of the virtual currency Gridcoin and the open-source research platform BOINC.
+        It combines the features of a Gridcoin wallet and a BOINC client. As an all-in-one solution, it will take care of handling your cryptocurrency assets and at the same time enable
+        you to participate in international research and distributed computing projects. Use our PiGrid Software on your Raspberry Pi to become a paid home-based researcher and
+        cryptocurrency user. \n \n
+
+        This app is developed for the PiGrid users who are using Pigrid software on Raspberry Pi. They can reach to their Pi devices via this app if they are connected to the same wifi network.
+        It allows access to the interface of the Pigrid software.
+
+    </string>
 </resources>

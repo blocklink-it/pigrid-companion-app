@@ -1,13 +1,13 @@
 package de.blocklink.pgiri.pgd.Fragment;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import de.blocklink.pgiri.pgd.MainActivity;
 import de.blocklink.pgiri.pgd.R;
 
 public class AboutFragment extends Fragment {
@@ -31,6 +31,12 @@ public class AboutFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+    }
+
+    public void onResume(){
+        super.onResume();
+        // Set title bar
+        ((MainActivity) getActivity()).setActionBarTitle("About App");
     }
 
     @Override
