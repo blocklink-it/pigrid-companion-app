@@ -10,18 +10,20 @@ import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class WebViewActivity extends AppCompatActivity {
 
     public static final String ARG_URL = "piIP";
-    private ProgressDialog pd;
-    WebView myWebView;
+    private WebView myWebView;
+    private ProgressBar pb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,8 @@ public class WebViewActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         this.myWebView = (WebView) findViewById(R.id.webView);
-        pd = ProgressDialog.show(this, "PGD", "Loading...", true);
+        pb = findViewById(R.id.pBar);
+        pb.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
         this.setUpWebView();
     }
 
@@ -77,17 +80,15 @@ public class WebViewActivity extends AppCompatActivity {
         }
 
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
-            pd.show();
+            pb.setVisibility(View.VISIBLE);
         }
 
         public void onPageFinished(WebView view, String url) {
-            if (pd.isShowing()) {
-                pd.dismiss();
-            }
+            pb.setVisibility(View.GONE);
         }
 
-        public void onReceivedError (WebView view, WebResourceRequest request, WebResourceError error){
-            pd.dismiss();
+        public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+            pb.setVisibility(View.GONE);
             Toast.makeText(WebViewActivity.this, "Error occurred while loading the page!!", Toast.LENGTH_LONG).show();
         }
     }
