@@ -15,25 +15,22 @@
             android:icon="@android:drawable/ic_menu_help"
             android:title="PiGrid Help" />
         <item
-            android:id="@+id/about"
-            android:icon="@android:drawable/ic_dialog_info"
-            android:title="About" />
-        <item
-            android:id="@+id/settings"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Settings" />
+            android:id="@+id/appHelp"
+            android:icon="@android:drawable/ic_menu_info_details"
+            android:title="App Help" />
+
     </group>
 
-    <item android:title="Social">
+    <item android:title="">
         <menu>
             <item
-                android:id="@+id/fb"
-                android:icon="@android:drawable/ic_menu_share"
-                android:title="Facebook" />
+                android:id="@+id/about"
+                android:icon="@android:drawable/ic_dialog_info"
+                android:title="About App" />
             <item
-                android:id="@+id/twitter"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Twitter" />
+                android:id="@+id/settings"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Settings" />
         </menu>
     </item>
 

@@ -18,12 +18,14 @@ import android.view.MenuItem;
 
 import de.blocklink.pgiri.pgd.Fragment.PieListFragment;
 import de.blocklink.pgiri.pgd.Fragment.SettingFragment;
+import de.blocklink.pgiri.pgd.Helper.PrefManager;
 import de.blocklink.pgiri.pgd.Helper.UrlHelper;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     NavigationView navigationView;
+    private PrefManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        prefManager = new PrefManager(this);
 
         FloatingActionButton searchPie = (FloatingActionButton) findViewById(R.id.search);
         searchPie.setOnClickListener(new View.OnClickListener() {
@@ -111,10 +114,11 @@ public class MainActivity extends AppCompatActivity
             return;
         } else if (menuId == R.id.settings) {
             fragment = new SettingFragment();
-        } else if (menuId == R.id.fb) {
-
-        } else if (menuId == R.id.twitter) {
-
+        } else if (menuId == R.id.appHelp) {
+            prefManager.setHomeBackBtnPressed(true);
+            Intent intent = new Intent(this, WelcomeActivity.class);
+            startActivity(intent);
+            finish();
         }
 
         if (fragment != null) {
