@@ -2,13 +2,15 @@ package de.blocklink.pgiri.pgd;
 
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
 
 import de.blocklink.pgiri.pgd.Adapter.PiItem;
 import de.blocklink.pgiri.pgd.Adapter.SimpleItemRecyclerViewAdapter;
@@ -18,9 +20,6 @@ import io.resourcepool.ssdp.model.DiscoveryListener;
 import io.resourcepool.ssdp.model.DiscoveryRequest;
 import io.resourcepool.ssdp.model.SsdpService;
 import io.resourcepool.ssdp.model.SsdpServiceAnnouncement;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * An activity representing a list of Pies. This activity
@@ -46,11 +45,11 @@ public class PiListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pie_list);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,7 +78,7 @@ public class PiListActivity extends AppCompatActivity {
 
     private void discoverPies() {
 
-        this.piItems = new ArrayList<PiItem>();
+        piItems = new ArrayList<PiItem>();
         client = SsdpClient.create();
         DiscoveryRequest networkStorageDevice = DiscoveryRequest.builder()
                 .serviceType("urn:blocklink:pigrid:web:0")

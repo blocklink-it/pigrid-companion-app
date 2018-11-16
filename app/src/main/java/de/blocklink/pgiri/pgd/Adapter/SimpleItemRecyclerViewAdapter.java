@@ -68,8 +68,8 @@ public  class SimpleItemRecyclerViewAdapter
 
         ViewHolder(View view) {
             super(view);
-            mIdView = (TextView) view.findViewById(R.id.pieItem);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mIdView = view.findViewById(R.id.pieItem);
+            mContentView = view.findViewById(R.id.content);
         }
     }
 }

@@ -20,8 +20,7 @@ public class ConnectionHelper {
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
         if(isConnected){
-            boolean isWiFi = activeNetwork.getType() == ConnectivityManager.TYPE_WIFI;
-            return isWiFi;
+            return activeNetwork.getType() == ConnectivityManager.TYPE_WIFI;
         }
         return isConnected;
     }

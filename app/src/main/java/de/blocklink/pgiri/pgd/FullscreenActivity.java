@@ -36,9 +36,9 @@ public class FullscreenActivity extends AppCompatActivity {
 
         pd = findViewById(R.id.progressBar);
         pd.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
-        myWebView = (WebView) findViewById(R.id.webView);
+        myWebView = findViewById(R.id.webView);
 
-        FloatingActionButton closePage = (FloatingActionButton) findViewById(R.id.close);
+        FloatingActionButton closePage = findViewById(R.id.close);
         closePage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

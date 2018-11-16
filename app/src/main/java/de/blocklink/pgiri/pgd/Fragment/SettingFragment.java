@@ -2,7 +2,6 @@ package de.blocklink.pgiri.pgd.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -34,7 +33,7 @@ public class SettingFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
 
-        Button button = (Button) view.findViewById(R.id.btnReset);
+        Button button = view.findViewById(R.id.btnReset);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 PrefManager prefManager = new PrefManager(getActivity().getBaseContext());

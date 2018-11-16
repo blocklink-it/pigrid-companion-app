@@ -31,20 +31,20 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         prefManager = new PrefManager(this);
 
-        FloatingActionButton searchPie = (FloatingActionButton) findViewById(R.id.search);
+        FloatingActionButton searchPie = findViewById(R.id.search);
         searchPie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         navigationView.getMenu().getItem(0).setChecked(true);
     }
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity
             callWebView(UrlHelper.helpUrl);
 
         } else if (menuId == R.id.piSpplier) {
-            callFullScreenWebView(UrlHelper.piSupplier);
+            callFullScreenWebView();
 
         } else if (menuId == R.id.appHelp) {
             prefManager.setHomeBackBtnPressed(true);
@@ -140,13 +140,13 @@ public class MainActivity extends AppCompatActivity
             ft.commit();
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
     }
 
     private void callWebView(String url) {
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 
         Intent intent = new Intent(this, WebViewActivity.class);
@@ -154,13 +154,13 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    private void callFullScreenWebView(String url){
+    private void callFullScreenWebView() {
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 
         Intent intent = new Intent(this, FullscreenActivity.class);
-        intent.putExtra(FullscreenActivity.URL, url);
+        intent.putExtra(FullscreenActivity.URL, UrlHelper.piSupplier);
         startActivity(intent);
     }
 

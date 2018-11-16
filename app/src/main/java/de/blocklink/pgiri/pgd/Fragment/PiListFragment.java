@@ -39,9 +39,6 @@ import io.resourcepool.ssdp.model.SsdpServiceAnnouncement;
  */
 public class PiListFragment extends Fragment {
 
-    private int mColumnCount = 1;
-
-    private int TIME_OUT_NO_PI = 20000; // 20 seconds
     private int TIME_OUT_NO_PI_SHORT = 100; // 100ms
 
     List<PiItem> piItems = null;
@@ -77,8 +74,9 @@ public class PiListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_pie_list, container, false);
         Context context = view.getContext();
-        recyclerView = (RecyclerView) view.findViewById(R.id.list);
-        emptyView = (TextView) view.findViewById(R.id.empty_view);
+        recyclerView = view.findViewById(R.id.list);
+        emptyView = view.findViewById(R.id.empty_view);
+        int mColumnCount = 1;
         if (mColumnCount <= 1) {
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
         } else {
@@ -116,6 +114,8 @@ public class PiListFragment extends Fragment {
             if (client != null) {
                 client.stopDiscovery();
             }
+            // 20 seconds
+            int TIME_OUT_NO_PI = 20000;
             hideShowNoPiFound(TIME_OUT_NO_PI);
             discoverPis();
         } else {
@@ -244,5 +244,4 @@ public class PiListFragment extends Fragment {
         }
     }
 
-    ;
 }
