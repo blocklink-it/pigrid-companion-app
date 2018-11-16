@@ -15,12 +15,12 @@ import de.blocklink.pgiri.pgd.R;
 public  class SimpleItemRecyclerViewAdapter
         extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-    private List<PieItem> pies;
+    private List<PiItem> pis;
 
     private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            PieItem item = (PieItem) view.getTag();
+            PiItem item = (PiItem) view.getTag();
 
             Context context = view.getContext();
             Intent intent = new Intent(context, FullscreenActivity.class);
@@ -29,12 +29,12 @@ public  class SimpleItemRecyclerViewAdapter
         }
     };
 
-    public SimpleItemRecyclerViewAdapter(List<PieItem> items) {
-        pies = items;
+    public SimpleItemRecyclerViewAdapter(List<PiItem> items) {
+        pis = items;
     }
-    public void setData(List<PieItem> items)
+    public void setData(List<PiItem> items)
     {
-        pies = items;
+        pis = items;
     }
 
     @Override
@@ -46,9 +46,9 @@ public  class SimpleItemRecyclerViewAdapter
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mIdView.setText(pies.get(position).location);
+        holder.mIdView.setText(pis.get(position).location);
 
-        holder.itemView.setTag(pies.get(position));
+        holder.itemView.setTag(pis.get(position));
         holder.itemView.setOnClickListener(mOnClickListener);
     }
 
@@ -56,8 +56,8 @@ public  class SimpleItemRecyclerViewAdapter
 
     @Override
     public int getItemCount() {
-        if (pies != null){
-            return pies.size();
+        if (pis != null){
+            return pis.size();
         }
         return 0;
     }

@@ -1,13 +1,13 @@
 package de.blocklink.pgiri.pgd.Adapter;
 
-public class PieItem {
+public class PiItem {
     public final String id;
     public final String serialNumber;
     public final String serviceType;
     public final String location;
 
 
-    public PieItem(String id, String serialNumber, String serviceType, String location) {
+    public PiItem(String id, String serialNumber, String serviceType, String location) {
         this.id = id;
         this.serialNumber = serialNumber;
         this.serviceType = serviceType;

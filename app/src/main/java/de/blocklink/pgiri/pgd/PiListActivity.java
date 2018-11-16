@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 
-import de.blocklink.pgiri.pgd.Adapter.PieItem;
+import de.blocklink.pgiri.pgd.Adapter.PiItem;
 import de.blocklink.pgiri.pgd.Adapter.SimpleItemRecyclerViewAdapter;
 import de.blocklink.pgiri.pgd.Helper.ConnectionHelper;
 import io.resourcepool.ssdp.client.SsdpClient;
@@ -30,13 +30,13 @@ import java.util.List;
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class PieListActivity extends AppCompatActivity {
+public class PiListActivity extends AppCompatActivity {
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
      */
-    public static List<PieItem> pieItems;
+    public static List<PiItem> piItems;
     RecyclerView recyclerView;
     SimpleItemRecyclerViewAdapter myAdapter;
     SsdpClient client;
@@ -60,13 +60,13 @@ public class PieListActivity extends AppCompatActivity {
 
         this.recyclerView = findViewById(R.id.pie_list);
         assert this.recyclerView != null;
-        //this.myAdapter = new SimpleItemRecyclerViewAdapter(this, this.pieItems);
+        //this.myAdapter = new SimpleItemRecyclerViewAdapter(this, this.piItems);
         recyclerView.setAdapter(this.myAdapter);
         this.setupPiesDiscovery();
     }
 
     private void setupPiesDiscovery() {
-        if (ConnectionHelper.isWiFiConnected(PieListActivity.this)) {
+        if (ConnectionHelper.isWiFiConnected(PiListActivity.this)) {
             if (client != null) {
                 client.stopDiscovery();
             }
@@ -79,7 +79,7 @@ public class PieListActivity extends AppCompatActivity {
 
     private void discoverPies() {
 
-        this.pieItems = new ArrayList<PieItem>();
+        this.piItems = new ArrayList<PiItem>();
         client = SsdpClient.create();
         DiscoveryRequest networkStorageDevice = DiscoveryRequest.builder()
                 .serviceType("urn:blocklink:pigrid:web:0")
@@ -88,8 +88,8 @@ public class PieListActivity extends AppCompatActivity {
             @Override
             public void onServiceDiscovered(SsdpService service) {
                 System.out.println("Found ip: " + service.getLocation());
-                PieItem pie = new PieItem("1", service.getSerialNumber(), service.getServiceType(), service.getLocation());
-                PieListActivity.pieItems.add(pie);
+                PiItem pie = new PiItem("1", service.getSerialNumber(), service.getServiceType(), service.getLocation());
+                PiListActivity.piItems.add(pie);
                 myAdapter.notifyDataSetChanged();
             }
 
@@ -107,7 +107,7 @@ public class PieListActivity extends AppCompatActivity {
 
     /*private void setupRecyclerView() {
 
-        myAdapter = new SimpleItemRecyclerViewAdapter(this, this.pieItems);
+        myAdapter = new SimpleItemRecyclerViewAdapter(this, this.piItems);
         myAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(myAdapter);
     }

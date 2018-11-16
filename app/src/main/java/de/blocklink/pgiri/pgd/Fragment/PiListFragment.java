@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -23,10 +22,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.blocklink.pgiri.pgd.Adapter.PieItem;
+import de.blocklink.pgiri.pgd.Adapter.PiItem;
 import de.blocklink.pgiri.pgd.Adapter.SimpleItemRecyclerViewAdapter;
 import de.blocklink.pgiri.pgd.Helper.ConnectionHelper;
-import de.blocklink.pgiri.pgd.PieListActivity;
+import de.blocklink.pgiri.pgd.MainActivity;
 import de.blocklink.pgiri.pgd.R;
 import io.resourcepool.ssdp.client.SsdpClient;
 import io.resourcepool.ssdp.model.DiscoveryListener;
@@ -38,14 +37,14 @@ import io.resourcepool.ssdp.model.SsdpServiceAnnouncement;
 /**
  * A fragment representing a list of Items.
  */
-public class PieListFragment extends Fragment {
+public class PiListFragment extends Fragment {
 
     private int mColumnCount = 1;
 
-    private int TIME_OUT_NO_PIE = 30000; // 0.5 minute
-    private int TIME_OUT_NO_PIE_SHORT = 100; // 100ms
+    private int TIME_OUT_NO_PI = 20000; // 20 seconds
+    private int TIME_OUT_NO_PI_SHORT = 100; // 100ms
 
-    List<PieItem> pieItems = null;
+    List<PiItem> piItems = null;
     SimpleItemRecyclerViewAdapter myAdapter;
     SsdpClient client;
     private ProgressDialog pd;
@@ -60,7 +59,7 @@ public class PieListFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public PieListFragment() {
+    public PiListFragment() {
     }
 
     @Override
@@ -86,9 +85,9 @@ public class PieListFragment extends Fragment {
             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
         setupProgressDialog();
-        myAdapter = new SimpleItemRecyclerViewAdapter(pieItems);
+        myAdapter = new SimpleItemRecyclerViewAdapter(piItems);
         recyclerView.setAdapter(myAdapter);
-        setupPieDiscovery();
+        setupPiDiscovery();
 
         return view;
     }
@@ -96,7 +95,7 @@ public class PieListFragment extends Fragment {
     private void setupProgressDialog() {
         pd = new ProgressDialog(getActivity(), R.style.CustomAlertDialogStyle);
         pd.setTitle("PGD");
-        pd.setMessage("Looking for Pie...");
+        pd.setMessage("Searching Pi...");
         pd.setCancelable(false);
         pd.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
             @Override
@@ -105,32 +104,32 @@ public class PieListFragment extends Fragment {
                     client.stopDiscovery();
                 }
                 pd.dismiss();
-                hideShowNoPieFound(TIME_OUT_NO_PIE_SHORT);
+                hideShowNoPiFound(TIME_OUT_NO_PI_SHORT);
             }
         });
         pd.show();
     }
 
-    private void setupPieDiscovery() {
+    private void setupPiDiscovery() {
         if (ConnectionHelper.isWiFiConnected(getActivity())) {
             pd.show();
             if (client != null) {
                 client.stopDiscovery();
             }
-            hideShowNoPieFound(TIME_OUT_NO_PIE);
-            discoverPies();
+            hideShowNoPiFound(TIME_OUT_NO_PI);
+            discoverPis();
         } else {
             pd.dismiss();
             Toast.makeText(getActivity(), "Connect your device to the wifi network to discover the Pi and click the search button", Toast.LENGTH_LONG).show();
             ConnectionHelper.enableWifi(getActivity());
-            hideShowNoPieFound(TIME_OUT_NO_PIE_SHORT);
+            hideShowNoPiFound(TIME_OUT_NO_PI_SHORT);
         }
     }
 
 
-    private void discoverPies() {
+    private void discoverPis() {
 
-        pieItems = new ArrayList<PieItem>();
+        piItems = new ArrayList<PiItem>();
         client = SsdpClient.create();
         DiscoveryRequest networkStorageDevice = DiscoveryRequest.builder()
                 .serviceType("urn:blocklink:pigrid:web:0")
@@ -139,16 +138,16 @@ public class PieListFragment extends Fragment {
             @Override
             public void onServiceDiscovered(SsdpService service) {
                 System.out.println("Found ip: " + service.getLocation());
-                PieItem pie = new PieItem("1", service.getSerialNumber(), service.getServiceType(), service.getLocation());
-                pieItems.add(pie);
+                PiItem pi = new PiItem("1", service.getSerialNumber(), service.getServiceType(), service.getLocation());
+                piItems.add(pi);
 
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        myAdapter.setData(pieItems);
+                        myAdapter.setData(piItems);
                         myAdapter.notifyDataSetChanged();
                         pd.dismiss();
-                        hideShowNoPieFound(TIME_OUT_NO_PIE_SHORT);
+                        hideShowNoPiFound(TIME_OUT_NO_PI_SHORT);
                     }
                 });
             }
@@ -157,7 +156,7 @@ public class PieListFragment extends Fragment {
             public void onFailed(Exception ex) {
                 System.out.println("Failed service: " + ex);
                 pd.dismiss();
-                Toast.makeText(getActivity(), "Something went wrong when searching for the pie.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Something went wrong when searching for the pi.", Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -167,7 +166,7 @@ public class PieListFragment extends Fragment {
         });
     }
 
-    private void hideShowNoPieFound(int timeOut) {
+    private void hideShowNoPiFound(int timeOut) {
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -176,7 +175,7 @@ public class PieListFragment extends Fragment {
                 if (pd.isShowing()) {
                     pd.dismiss();
                 }
-                if (pieItems == null || pieItems.isEmpty()) {
+                if (piItems == null || piItems.isEmpty()) {
                     recyclerView.setVisibility(View.GONE);
                     emptyView.setVisibility(View.VISIBLE);
                 } else {
@@ -187,11 +186,17 @@ public class PieListFragment extends Fragment {
         }, timeOut);
     }
 
-    private void clearPieListView() {
-        pieItems = null;
-        myAdapter.setData(pieItems);
+    private void clearPiListView() {
+        piItems = null;
+        myAdapter.setData(piItems);
         myAdapter.notifyDataSetChanged();
-        hideShowNoPieFound(TIME_OUT_NO_PIE_SHORT);
+        hideShowNoPiFound(TIME_OUT_NO_PI_SHORT);
+    }
+
+    public void onResume() {
+        super.onResume();
+        // Set title bar
+        ((MainActivity) getActivity()).setActionBarTitle("Pis");
     }
 
     @Override
@@ -222,19 +227,18 @@ public class PieListFragment extends Fragment {
             switch (status) {
                 case ConnectionHelper.NETWORK_STATUS_NOT_CONNECTED:
                     Toast.makeText(getActivity(), "Device Wifi connection lost", Toast.LENGTH_LONG).show();
-                    clearPieListView();
+                    clearPiListView();
                     break;
                 case ConnectionHelper.NETWORK_STATUS_WIFI:
                     if (!firstLoad) {
-                        setupPieDiscovery();
+                        setupPiDiscovery();
                         Toast.makeText(getActivity(), "Device connected to the wifi network", Toast.LENGTH_LONG).show();
                     }
                     firstLoad = false;
                     break;
-
                 case ConnectionHelper.NETWORK_STATUS_MOBILE:
-                    Toast.makeText(getActivity(), "Device connected to the mobile network. Please connect to the wifi network to discover the Pie", Toast.LENGTH_LONG).show();
-                    clearPieListView();
+                    Toast.makeText(getActivity(), "Device connected to the mobile network. Please connect to the wifi network to discover the Pi", Toast.LENGTH_LONG).show();
+                    clearPiListView();
                     break;
             }
         }

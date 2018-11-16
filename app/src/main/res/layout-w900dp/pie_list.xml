@@ -10,7 +10,7 @@
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
     android:showDividers="middle"
-    tools:context=".PieListActivity">
+    tools:context=".PiListActivity">
 
     <!--
     This layout is a two-pane layout for the Pies
@@ -27,7 +27,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context="de.blocklink.pgiri.pgd.PieListActivity"
+        tools:context="de.blocklink.pgiri.pgd.PiListActivity"
         tools:listitem="@layout/pie_list_content" />
 
     <FrameLayout

@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".PieListActivity"
+    tools:context=".PiListActivity"
     tools:listitem="@layout/pie_list_content" />

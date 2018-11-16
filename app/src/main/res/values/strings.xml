@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">PGD</string>
-    <string name="title_pie_list">Pies</string>
+    <string name="title_pie_list">Pis</string>
     <string name="title_pie_detail">Pgd</string>
 
     <string name="next">NEXT</string>
@@ -24,7 +24,7 @@
     <string name="slide_4_title">Help</string>
     <string name="slide_4_desc">You can reset the app data any time!</string>
 
-    <string name="title_activity_fullscreen">Pie Detail</string>
+    <string name="title_activity_fullscreen">Pi Detail</string>
     <string name="back"> Back </string>
 
     <string name="title_activity_main">MainActivity</string>

@@ -3,7 +3,6 @@ package de.blocklink.pgiri.pgd;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -17,7 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import de.blocklink.pgiri.pgd.Fragment.AboutFragment;
-import de.blocklink.pgiri.pgd.Fragment.PieListFragment;
+import de.blocklink.pgiri.pgd.Fragment.PiListFragment;
 import de.blocklink.pgiri.pgd.Fragment.SettingFragment;
 import de.blocklink.pgiri.pgd.Helper.PrefManager;
 import de.blocklink.pgiri.pgd.Helper.UrlHelper;
@@ -105,19 +104,28 @@ public class MainActivity extends AppCompatActivity
 
         if (menuId == R.id.discoverPi) {
             navigationView.getMenu().getItem(0).setChecked(true);
-            fragment = new PieListFragment();
+            fragment = new PiListFragment();
+
+        } else if (menuId == R.id.piGridShop) {
+            callWebView(UrlHelper.shopUrl);
 
         } else if (menuId == R.id.help) {
             callWebView(UrlHelper.helpUrl);
-            return;
-        } else if (menuId == R.id.about) {
-            fragment = new AboutFragment();
-        } else if (menuId == R.id.settings) {
-            fragment = new SettingFragment();
+
+        } else if (menuId == R.id.piSpplier) {
+            callWebView(UrlHelper.piSupplier);
+
         } else if (menuId == R.id.appHelp) {
             prefManager.setHomeBackBtnPressed(true);
             Intent intent = new Intent(this, WelcomeActivity.class);
             startActivity(intent);
+
+        } else if (menuId == R.id.about) {
+            fragment = new AboutFragment();
+
+        } else if (menuId == R.id.settings) {
+            fragment = new SettingFragment();
+
         }
 
         if (fragment != null) {
