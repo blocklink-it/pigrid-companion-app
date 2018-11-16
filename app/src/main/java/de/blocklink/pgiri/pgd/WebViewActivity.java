@@ -1,14 +1,11 @@
 package de.blocklink.pgiri.pgd;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-
-import android.support.v7.widget.Toolbar;
-
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebResourceError;
@@ -91,5 +88,22 @@ public class WebViewActivity extends AppCompatActivity {
             pb.setVisibility(View.GONE);
             Toast.makeText(WebViewActivity.this, "Error occurred while loading the page!!", Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // Check if the key event was the Back button and if there's history
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && myWebView.canGoBack()) {
+            myWebView.goBack();
+            return true;
+        }
+        // Check if the key event was the forward button and if there's history
+        if ((keyCode == KeyEvent.KEYCODE_FORWARD) && myWebView.canGoForward()) {
+            myWebView.goForward();
+            return true;
+        }
+        // If it wasn't the Back key or there's no web page history, bubble up to the default
+        // system behavior (probably exit the activity)
+        return super.onKeyDown(keyCode, event);
     }
 }

@@ -56,6 +56,13 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    public void onResume(){
+        super.onResume();
+        navigationView.getMenu().getItem(0).setChecked(true);
+    }
+
+
+    @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -95,7 +102,7 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         //calling the method displaySelectedMenuPage and passing the id of selected menu
-        displaySelectedMenuPage(item.getItemId());
+        displaySelectedMenuPage(id);
         return true;
     }
 
@@ -103,7 +110,6 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment = null;
 
         if (menuId == R.id.discoverPi) {
-            navigationView.getMenu().getItem(0).setChecked(true);
             fragment = new PiListFragment();
 
         } else if (menuId == R.id.piGridShop) {
@@ -113,7 +119,7 @@ public class MainActivity extends AppCompatActivity
             callWebView(UrlHelper.helpUrl);
 
         } else if (menuId == R.id.piSpplier) {
-            callWebView(UrlHelper.piSupplier);
+            callFullScreenWebView(UrlHelper.piSupplier);
 
         } else if (menuId == R.id.appHelp) {
             prefManager.setHomeBackBtnPressed(true);
@@ -145,6 +151,16 @@ public class MainActivity extends AppCompatActivity
 
         Intent intent = new Intent(this, WebViewActivity.class);
         intent.putExtra(WebViewActivity.ARG_URL, url);
+        startActivity(intent);
+    }
+
+    private void callFullScreenWebView(String url){
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+
+        Intent intent = new Intent(this, FullscreenActivity.class);
+        intent.putExtra(FullscreenActivity.URL, url);
         startActivity(intent);
     }
 
