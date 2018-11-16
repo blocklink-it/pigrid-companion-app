@@ -100,7 +100,7 @@ public class FullscreenActivity extends AppCompatActivity {
 
         public void onReceivedError (WebView view, WebResourceRequest request, WebResourceError error){
             pd.setVisibility(View.GONE);
-            Toast.makeText(FullscreenActivity.this, "Error occurred while loading the page!!", Toast.LENGTH_LONG).show();
+            Toast.makeText(FullscreenActivity.this, getString(R.string.page_load_error), Toast.LENGTH_LONG).show();
         }
     }
 }

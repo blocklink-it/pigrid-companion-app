@@ -36,7 +36,7 @@ public class AboutFragment extends Fragment {
     public void onResume(){
         super.onResume();
         // Set title bar
-        ((MainActivity) getActivity()).setActionBarTitle("About App");
+        ((MainActivity) getActivity()).setActionBarTitle(getString(R.string.about_app));
     }
 
     @Override

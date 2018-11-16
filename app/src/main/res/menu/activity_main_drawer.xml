@@ -7,18 +7,18 @@
         <item
             android:id="@+id/discoverPi"
             android:layout_width="match_parent"
-            android:title="Discover Pi"
+            android:title="@string/discover_pi"
             android:icon="@android:drawable/ic_search_category_default"/>
 
         <item
             android:id="@+id/piGridShop"
             android:icon="@drawable/shop"
-            android:title="Pi Grid Shop" />
+            android:title="@string/shop" />
 
         <item
             android:id="@+id/piSpplier"
             android:icon="@drawable/pi_supply"
-            android:title="Pi Supplier" />
+            android:title="@string/supplier" />
 
     </group>
 
@@ -27,22 +27,22 @@
             <item
                 android:id="@+id/help"
                 android:icon="@android:drawable/ic_menu_help"
-                android:title="PiGrid Help" />
+                android:title="@string/pigrid_help" />
             <item
                 android:id="@+id/appHelp"
                 android:icon="@drawable/app_help"
-                android:title="App Help" />
+                android:title="@string/app_help" />
 
             <item
                 android:id="@+id/about"
                 android:checkable="true"
                 android:icon="@drawable/about_app"
-                android:title="About App" />
+                android:title="@string/about_app" />
             <item
                 android:id="@+id/settings"
                 android:checkable="true"
                 android:icon="@drawable/ic_menu_manage"
-                android:title="Settings" />
+                android:title="@string/settings" />
         </menu>
     </item>
 

@@ -40,7 +40,7 @@ public class SettingFragment extends Fragment {
                 prefManager.clearPref();
                 Intent intent = getActivity().getIntent();
                 startActivity(intent);
-                Toast.makeText(getActivity().getBaseContext(), "Your application has been Reset ! ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getBaseContext(), getString(R.string.reset_msg), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -56,7 +56,7 @@ public class SettingFragment extends Fragment {
     public void onResume(){
         super.onResume();
         // Set title bar
-        ((MainActivity) getActivity()).setActionBarTitle("Settings");
+        ((MainActivity) getActivity()).setActionBarTitle(getString(R.string.settings));
     }
 
     @Override

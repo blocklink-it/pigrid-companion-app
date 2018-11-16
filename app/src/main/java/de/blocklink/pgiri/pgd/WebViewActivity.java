@@ -86,7 +86,7 @@ public class WebViewActivity extends AppCompatActivity {
 
         public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
             pb.setVisibility(View.GONE);
-            Toast.makeText(WebViewActivity.this, "Error occurred while loading the page!!", Toast.LENGTH_LONG).show();
+            Toast.makeText(WebViewActivity.this, getString(R.string.page_load_error), Toast.LENGTH_LONG).show();
         }
     }
 

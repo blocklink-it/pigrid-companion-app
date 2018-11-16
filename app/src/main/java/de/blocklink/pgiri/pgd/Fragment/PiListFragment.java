@@ -25,6 +25,7 @@ import java.util.List;
 import de.blocklink.pgiri.pgd.Adapter.PiItem;
 import de.blocklink.pgiri.pgd.Adapter.SimpleItemRecyclerViewAdapter;
 import de.blocklink.pgiri.pgd.Helper.ConnectionHelper;
+import de.blocklink.pgiri.pgd.Helper.UrlHelper;
 import de.blocklink.pgiri.pgd.MainActivity;
 import de.blocklink.pgiri.pgd.R;
 import io.resourcepool.ssdp.client.SsdpClient;
@@ -92,10 +93,10 @@ public class PiListFragment extends Fragment {
 
     private void setupProgressDialog() {
         pd = new ProgressDialog(getActivity(), R.style.CustomAlertDialogStyle);
-        pd.setTitle("PGD");
-        pd.setMessage("Searching Pi...");
+        pd.setTitle(getString(R.string.app_name));
+        pd.setMessage(getString(R.string.searching_pi));
         pd.setCancelable(false);
-        pd.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+        pd.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (client != null) {
@@ -120,7 +121,7 @@ public class PiListFragment extends Fragment {
             discoverPis();
         } else {
             pd.dismiss();
-            Toast.makeText(getActivity(), "Connect your device to the wifi network to discover the Pi and click the search button", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), getString(R.string.connect_message), Toast.LENGTH_LONG).show();
             ConnectionHelper.enableWifi(getActivity());
             hideShowNoPiFound(TIME_OUT_NO_PI_SHORT);
         }
@@ -132,13 +133,13 @@ public class PiListFragment extends Fragment {
         piItems = new ArrayList<PiItem>();
         client = SsdpClient.create();
         DiscoveryRequest networkStorageDevice = DiscoveryRequest.builder()
-                .serviceType("urn:blocklink:pigrid:web:0")
+                .serviceType(UrlHelper.serviceType)
                 .build();
         client.discoverServices(networkStorageDevice, new DiscoveryListener() {
             @Override
             public void onServiceDiscovered(SsdpService service) {
                 System.out.println("Found ip: " + service.getLocation());
-                PiItem pi = new PiItem("1", service.getSerialNumber(), service.getServiceType(), service.getLocation());
+                PiItem pi = new PiItem(service.getLocation(), service.getSerialNumber(), service.getServiceType(), service.getLocation());
                 piItems.add(pi);
 
                 getActivity().runOnUiThread(new Runnable() {
@@ -156,7 +157,7 @@ public class PiListFragment extends Fragment {
             public void onFailed(Exception ex) {
                 System.out.println("Failed service: " + ex);
                 pd.dismiss();
-                Toast.makeText(getActivity(), "Something went wrong when searching for the pi.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), getString(R.string.failed_pi), Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -196,7 +197,7 @@ public class PiListFragment extends Fragment {
     public void onResume() {
         super.onResume();
         // Set title bar
-        ((MainActivity) getActivity()).setActionBarTitle("Pis");
+        ((MainActivity) getActivity()).setActionBarTitle(getString(R.string.title_pie_list));
     }
 
     @Override
@@ -226,18 +227,18 @@ public class PiListFragment extends Fragment {
             int status = ConnectionHelper.getConnectivityStatusString(context);
             switch (status) {
                 case ConnectionHelper.NETWORK_STATUS_NOT_CONNECTED:
-                    Toast.makeText(getActivity(), "Device Wifi connection lost", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), getString(R.string.connection_lost), Toast.LENGTH_LONG).show();
                     clearPiListView();
                     break;
                 case ConnectionHelper.NETWORK_STATUS_WIFI:
                     if (!firstLoad) {
                         setupPiDiscovery();
-                        Toast.makeText(getActivity(), "Device connected to the wifi network", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), getString(R.string.wifi_connected), Toast.LENGTH_LONG).show();
                     }
                     firstLoad = false;
                     break;
                 case ConnectionHelper.NETWORK_STATUS_MOBILE:
-                    Toast.makeText(getActivity(), "Device connected to the mobile network. Please connect to the wifi network to discover the Pi", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), getString(R.string.data_connected), Toast.LENGTH_LONG).show();
                     clearPiListView();
                     break;
             }

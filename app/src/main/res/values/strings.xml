@@ -1,12 +1,23 @@
 <resources>
-    <string name="app_name">PGD</string>
-    <string name="title_pie_list">Pis</string>
-    <string name="title_pie_detail">Pgd</string>
+    <string name="app_name">PiGrid Companion</string>
+    <string name="title_pie_list">Pi Devices</string>
 
+    <!-- for Welcome Activity -->
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
     <string name="reset">RESET</string>
+    <string name="cancel">Cancel</string>
+
+
+    <!-- for Menus -->
+    <string name="discover_pi">Discover Pi</string>
+    <string name="shop">PiGrid Shop</string>
+    <string name="supplier">Pi Supplier</string>
+    <string name="pigrid_help">PiGrid Help</string>
+    <string name="app_help">App Help</string>
+    <string name="settings">Setting</string>
+    <string name="about_app">About App</string>
 
     <string name="home_text"> Discover and connect device available in your network! </string>
     <string name="no_device"> There is no any required device in the network </string>
@@ -24,13 +35,15 @@
     <string name="slide_4_title">Help</string>
     <string name="slide_4_desc">You can reset the app data any time!</string>
 
+    <string name="reset_msg"> Your application has been Reset ! </string>
+
     <string name="title_activity_fullscreen">Pi Detail</string>
     <string name="back"> Back </string>
 
     <string name="title_activity_main">MainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Pi Grid</string>
+    <string name="nav_header_title">PiGrid Companion</string>
     <string name="nav_header_subtitle">info@blocklink.de</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
@@ -50,4 +63,15 @@
         It allows access to the interface of the Pigrid software.
 
     </string>
+
+    <!-- for Pie List Fragments -->
+    <string name="searching_pi">Searching Pi...</string>
+    <string name="connection_lost">Device Wifi connection lost</string>
+    <string name="wifi_connected">Device connected to the wifi network</string>
+    <string name="data_connected">Device connected to the mobile network. Please connect to the wifi network to discover the Pi</string>
+    <string name="connect_message">Connect your device to the wifi network to discover the Pi</string>
+    <string name="failed_pi">Something went wrong when searching for the pi.</string>
+
+    <string name="page_load_error">Error occurred while loading the page!!</string>
+
 </resources>

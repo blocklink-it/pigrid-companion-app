@@ -38,7 +38,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".WebViewActivity"
-            android:label="@string/title_pie_detail"
+            android:label="@string/app_name"
             android:parentActivityName=".PiListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
