@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 public class WebViewActivity extends AppCompatActivity {
 
-    public static final String ARG_URL = "piIP";
+    public static final String ARG_URL = "url"; // url to pass to load on Webview
     private WebView myWebView;
     private ProgressBar pb;
 
@@ -27,7 +27,7 @@ public class WebViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pie_detail);
         Toolbar toolbar = findViewById(R.id.detail_toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar); // adds back button
 
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();
@@ -36,6 +36,7 @@ public class WebViewActivity extends AppCompatActivity {
         }
         this.myWebView = findViewById(R.id.webView);
         pb = findViewById(R.id.pBar);
+        // changes the custom color of the spinner
         pb.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
         this.setUpWebView();
     }
@@ -53,10 +54,11 @@ public class WebViewActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    // function to setup zooming control
     private void setUpWebView() {
         String piIP = getIntent().getStringExtra(ARG_URL);
         if (piIP != null) {
-            WebSettings webSettings = myWebView.getSettings();
+            WebSettings webSettings = myWebView.getSettings(); // gets web settings
             webSettings.setJavaScriptEnabled(true);
             webSettings.setLoadWithOverviewMode(true);
             webSettings.setUseWideViewPort(true);
@@ -77,7 +79,7 @@ public class WebViewActivity extends AppCompatActivity {
         }
 
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
-            pb.setVisibility(View.VISIBLE);
+            pb.setVisibility(View.VISIBLE); // shows loading spinner
         }
 
         public void onPageFinished(WebView view, String url) {
@@ -85,7 +87,7 @@ public class WebViewActivity extends AppCompatActivity {
         }
 
         public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-            pb.setVisibility(View.GONE);
+            pb.setVisibility(View.GONE); // hides spinner
             Toast.makeText(WebViewActivity.this, getString(R.string.page_load_error), Toast.LENGTH_LONG).show();
         }
     }

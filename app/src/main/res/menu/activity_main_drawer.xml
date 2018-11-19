@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group >
         <item
             android:id="@+id/discoverPi"
             android:layout_width="match_parent"
             android:title="@string/discover_pi"
+            android:checkable="true"
             android:icon="@android:drawable/ic_search_category_default"/>
 
         <item
@@ -38,11 +39,12 @@
                 android:checkable="true"
                 android:icon="@drawable/about_app"
                 android:title="@string/about_app" />
-            <item
+
+            <!--<item
                 android:id="@+id/settings"
                 android:checkable="true"
                 android:icon="@drawable/ic_menu_manage"
-                android:title="@string/settings" />
+                android:title="@string/settings" />-->
         </menu>
     </item>
 

@@ -24,13 +24,13 @@
     <string name="search_device"> Search devices </string>
 
     <string name="slide_1_title">Hello PiGrid Users!</string>
-    <string name="slide_1_desc">This app is the easiest way to discover pi devices in the wifi network and connect with them !</string>
+    <string name="slide_1_desc">With this PiGrid Companion app you will be able to find and control your PiGrid device/s easily and comfortably via your Smartphone or Tablet.</string>
 
     <string name="slide_2_title">Connect</string>
-    <string name="slide_2_desc">Connect any pi devices from the list of available pi devices!</string>
+    <string name="slide_2_desc">The integrated detection function automatically finds your PiGrid device in your WiFi network.</string>
 
-    <string name="slide_3_title">Settings</string>
-    <string name="slide_3_desc">Discover pi device connected in the wifi network! \n To see the welcome slider again, goto Settings -> reset </string>
+    <string name="slide_3_title">Control</string>
+    <string name="slide_3_desc">Take full control of your PiGrid device and manage your wallet, research and device settings. </string>
 
     <string name="slide_4_title">Help</string>
     <string name="slide_4_desc">You can reset the app data any time!</string>

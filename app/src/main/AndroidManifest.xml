@@ -10,9 +10,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/app_icon"
+        android:icon="@mipmap/app_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/app_icon"
+        android:roundIcon="@mipmap/app_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -20,7 +20,6 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -33,17 +32,13 @@
             android:label="@string/title_pie_list"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".PiListActivity"
-            android:label="@string/title_pie_list"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".WebViewActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".PiListActivity"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.blocklink.pgiri.pgd.PiListActivity" />
+                android:value="de.blocklink.pgiri.pgd.MainActivity" />
         </activity>
         <activity
             android:name=".FullscreenActivity"

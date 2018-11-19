@@ -57,8 +57,8 @@ public class WelcomeActivity extends AppCompatActivity {
         layouts = new int[]{
                 R.layout.welcome_side1,
                 R.layout.welcome_side2,
-                R.layout.welcome_side3,
-                R.layout.welcome_side4};
+                R.layout.welcome_side3};
+        //R.layout.welcome_side4
 
         // adding bottom dots
         addBottomDots(0);
@@ -116,16 +116,17 @@ public class WelcomeActivity extends AppCompatActivity {
         return viewPager.getCurrentItem() + i;
     }
 
+    // function which decides if app is fist time lunched or not and is app help is displayed
     private void launchHomeScreen() {
         if (prefManager.isHomeBackBtnPressed() && !prefManager.isFirstTimeLaunch()) {
             prefManager.setHomeBackBtnPressed(false);
-            finish();
+            finish(); // if app help is called from nav menu just closes the activity
             return;
         }
-        callMainActivity();
+        callMainActivity(); // else initializes the main activity
     }
 
-    private void callMainActivity(){
+    private void callMainActivity() {
         prefManager.setFirstTimeLaunch(false);
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -207,5 +208,11 @@ public class WelcomeActivity extends AppCompatActivity {
             View view = (View) object;
             container.removeView(view);
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        prefManager.setHomeBackBtnPressed(false);
     }
 }

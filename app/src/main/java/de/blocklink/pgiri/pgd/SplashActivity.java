@@ -9,10 +9,10 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Make sure this is before calling super.onCreate
-        setTheme(R.style.AppTheme);
+        setTheme(R.style.AppTheme); // setup Theme for launcher
         super.onCreate(savedInstanceState);
 
-        Intent intent = new Intent(this, WelcomeActivity.class);
+        Intent intent = new Intent(this, WelcomeActivity.class); // calls main activity after app launches
         startActivity(intent);
         finish();
     }
