@@ -18,6 +18,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAlignment="gravity"
         android:padding="@dimen/margin_text"
         android:text="@string/about_app_text" />
 
