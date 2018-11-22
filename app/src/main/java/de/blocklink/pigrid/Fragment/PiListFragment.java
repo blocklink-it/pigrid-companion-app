@@ -1,4 +1,4 @@
-package de.blocklink.pgiri.pgd.Fragment;
+package de.blocklink.pigrid.Fragment;
 
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
@@ -22,12 +22,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.blocklink.pgiri.pgd.Adapter.PiItem;
-import de.blocklink.pgiri.pgd.Adapter.SimpleItemRecyclerViewAdapter;
-import de.blocklink.pgiri.pgd.Helper.ConnectionHelper;
-import de.blocklink.pgiri.pgd.Helper.UrlHelper;
-import de.blocklink.pgiri.pgd.MainActivity;
-import de.blocklink.pgiri.pgd.R;
+import de.blocklink.pigrid.Adapter.PiItem;
+import de.blocklink.pigrid.Adapter.SimpleItemRecyclerViewAdapter;
+import de.blocklink.pigrid.Helper.ConnectionHelper;
+import de.blocklink.pigrid.Helper.UrlHelper;
+import de.blocklink.pigrid.MainActivity;
+import de.blocklink.pigrid.R;
 import io.resourcepool.ssdp.client.SsdpClient;
 import io.resourcepool.ssdp.model.DiscoveryListener;
 import io.resourcepool.ssdp.model.DiscoveryRequest;

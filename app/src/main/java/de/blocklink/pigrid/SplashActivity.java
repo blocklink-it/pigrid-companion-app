@@ -1,4 +1,4 @@
-package de.blocklink.pgiri.pgd;
+package de.blocklink.pigrid;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

@@ -1,4 +1,4 @@
-package de.blocklink.pgiri.pgd;
+package de.blocklink.pigrid;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import de.blocklink.pgiri.pgd.Helper.PrefManager;
+import de.blocklink.pigrid.Helper.PrefManager;
 
 public class WelcomeActivity extends AppCompatActivity {
 

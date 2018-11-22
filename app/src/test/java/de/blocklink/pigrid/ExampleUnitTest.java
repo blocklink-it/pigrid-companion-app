@@ -1,4 +1,4 @@
-package de.blocklink.pgiri.pgd;
+package de.blocklink.pigrid;
 
 import org.junit.Test;
 

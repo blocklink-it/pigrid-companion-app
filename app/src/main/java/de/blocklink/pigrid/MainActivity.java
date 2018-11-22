@@ -1,4 +1,4 @@
-package de.blocklink.pgiri.pgd;
+package de.blocklink.pigrid;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,10 +15,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import de.blocklink.pgiri.pgd.Fragment.AboutFragment;
-import de.blocklink.pgiri.pgd.Fragment.PiListFragment;
-import de.blocklink.pgiri.pgd.Helper.PrefManager;
-import de.blocklink.pgiri.pgd.Helper.UrlHelper;
+import de.blocklink.pigrid.Fragment.AboutFragment;
+import de.blocklink.pigrid.Fragment.PiListFragment;
+import de.blocklink.pigrid.Helper.PrefManager;
+import de.blocklink.pigrid.Helper.UrlHelper;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

@@ -1,4 +1,4 @@
-package de.blocklink.pgiri.pgd;
+package de.blocklink.pigrid;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;

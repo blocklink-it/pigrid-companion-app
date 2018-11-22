@@ -1,4 +1,4 @@
-package de.blocklink.pgiri.pgd.Fragment;
+package de.blocklink.pigrid.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import de.blocklink.pgiri.pgd.MainActivity;
-import de.blocklink.pgiri.pgd.R;
+import de.blocklink.pigrid.MainActivity;
+import de.blocklink.pigrid.R;
 
 public class AboutFragment extends Fragment {
 

@@ -1,4 +1,4 @@
-package de.blocklink.pgiri.pgd.Adapter;
+package de.blocklink.pigrid.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import java.util.List;
 
-import de.blocklink.pgiri.pgd.FullscreenActivity;
-import de.blocklink.pgiri.pgd.R;
+import de.blocklink.pigrid.FullscreenActivity;
+import de.blocklink.pigrid.R;
 
 public  class SimpleItemRecyclerViewAdapter
         extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {

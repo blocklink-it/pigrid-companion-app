@@ -1,4 +1,4 @@
-package de.blocklink.pgiri.pgd.Adapter;
+package de.blocklink.pigrid.Adapter;
 
 public class PiItem {
     public final String id;

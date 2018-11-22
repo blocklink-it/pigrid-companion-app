@@ -1,4 +1,4 @@
-package de.blocklink.pgiri.pgd.Fragment;
+package de.blocklink.pigrid.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import de.blocklink.pgiri.pgd.Helper.PrefManager;
-import de.blocklink.pgiri.pgd.MainActivity;
-import de.blocklink.pgiri.pgd.R;
+import de.blocklink.pigrid.Helper.PrefManager;
+import de.blocklink.pigrid.MainActivity;
+import de.blocklink.pigrid.R;
 
 public class SettingFragment extends Fragment {
 

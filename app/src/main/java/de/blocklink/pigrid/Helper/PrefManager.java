@@ -1,4 +1,4 @@
-package de.blocklink.pgiri.pgd.Helper;
+package de.blocklink.pigrid.Helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
