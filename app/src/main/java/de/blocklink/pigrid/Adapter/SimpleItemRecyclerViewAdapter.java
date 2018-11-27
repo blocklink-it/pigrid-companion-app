@@ -46,7 +46,8 @@ public  class SimpleItemRecyclerViewAdapter
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mIdView.setText(pis.get(position).location);
+        holder.mIdView.setText("PiGrid " + (position + 1));
+        holder.mContentView.setText(pis.get(position).location);
 
         holder.itemView.setTag(pis.get(position));
         holder.itemView.setOnClickListener(mOnClickListener);
