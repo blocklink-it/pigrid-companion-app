@@ -146,17 +146,6 @@ public class PiListFragment extends Fragment {
                 System.out.println("Found ip: " + service.getLocation());
                 PiItem pi = new PiItem(service.getLocation(), service.getSerialNumber(), service.getServiceType(), service.getLocation());
                 piItems.add(pi);
-                piItems.add(pi);
-                piItems.add(pi);
-                piItems.add(pi);
-                piItems.add(pi);
-                piItems.add(pi);
-                piItems.add(pi);
-                piItems.add(pi);
-                piItems.add(pi);
-                piItems.add(pi);
-                piItems.add(pi);
-                piItems.add(pi);
 
                 getActivity().runOnUiThread(new Runnable() { // updates view on main thread
                     @Override
