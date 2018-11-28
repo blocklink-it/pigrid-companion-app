@@ -26,5 +26,8 @@
     <dimen name="margin_left_right">10dp</dimen>
     <dimen name="margin_text">10dp</dimen>
 
+    <dimen name="margin_negative">-15dp</dimen>
+    <dimen name="small_margin">8dp</dimen>
+
 
 </resources>
