@@ -29,5 +29,7 @@
     <dimen name="margin_negative">-15dp</dimen>
     <dimen name="small_margin">8dp</dimen>
 
+    <dimen name="padding_text">5dp</dimen>
+
 
 </resources>

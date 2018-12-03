@@ -27,14 +27,17 @@
         <activity
             android:name=".WelcomeActivity"
             android:noHistory="true"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_pie_list"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".WebViewActivity"
             android:label="@string/app_name"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
