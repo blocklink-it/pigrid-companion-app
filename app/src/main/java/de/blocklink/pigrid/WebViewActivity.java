@@ -1,6 +1,8 @@
 package de.blocklink.pigrid;
 
+import android.annotation.TargetApi;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -72,10 +74,18 @@ public class WebViewActivity extends AppCompatActivity {
 
     public class WebViewController extends WebViewClient {
 
+        @SuppressWarnings("deprecation")
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             view.loadUrl(url);
             return true;
+        }
+
+        @TargetApi(Build.VERSION_CODES.N)
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+            /*  String url = request.getUrl().toString();*/
+            return false;
         }
 
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
@@ -86,8 +96,18 @@ public class WebViewActivity extends AppCompatActivity {
             pb.setVisibility(View.GONE);
         }
 
-        public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+        @SuppressWarnings("deprecation")
+        @Override
+        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+            // Handle the error
             pb.setVisibility(View.GONE); // hides spinner
+            Toast.makeText(WebViewActivity.this, getString(R.string.page_load_error), Toast.LENGTH_LONG).show();
+        }
+
+        @TargetApi(android.os.Build.VERSION_CODES.M)
+        public void onReceivedError(WebView view, WebResourceRequest req, WebResourceError rerr) {
+            pb.setVisibility(View.GONE); // hides spinner
+            onReceivedError(view, rerr.getErrorCode(), rerr.getDescription().toString(), req.getUrl().toString());
             Toast.makeText(WebViewActivity.this, getString(R.string.page_load_error), Toast.LENGTH_LONG).show();
         }
     }
