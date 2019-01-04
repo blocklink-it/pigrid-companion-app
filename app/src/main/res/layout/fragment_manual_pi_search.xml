@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/mainContainer"
     tools:context=".Fragment.ManualPiSearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_left_right"
+        android:text="@string/manual_search_msg" />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin">
+
+        <EditText
+            android:id="@+id/etManualIP"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edit_text_height"
+            android:paddingLeft="@dimen/padding_text"
+            android:textColor="@color/colorWhite"
+            android:inputType="number|numberDecimal"
+            android:digits="0123456789."
+            android:hint="@string/manual_search_et_placeholder"
+            android:imeOptions="actionDone"
+            android:background="@color/dot_light_screen3"/>
+
+        <Button
+            android:id="@+id/btnManualSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorWhite"
+            android:text="@string/manual_search_pi"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

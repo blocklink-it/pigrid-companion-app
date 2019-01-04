@@ -20,6 +20,11 @@
             android:id="@+id/piSpplier"
             android:icon="@drawable/pi_supply"
             android:title="@string/supplier" />
+        <item
+            android:id="@+id/manualSearch"
+            android:checkable="true"
+            android:icon="@drawable/ic_manual_search"
+            android:title="@string/manual_search" />
 
     </group>
 

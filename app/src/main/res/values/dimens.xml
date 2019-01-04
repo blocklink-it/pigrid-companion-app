@@ -30,6 +30,7 @@
     <dimen name="small_margin">8dp</dimen>
 
     <dimen name="padding_text">5dp</dimen>
+    <dimen name="edit_text_height">45dp</dimen>
 
 
 </resources>

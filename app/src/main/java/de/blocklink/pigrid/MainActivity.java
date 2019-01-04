@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import de.blocklink.pigrid.Fragment.AboutFragment;
+import de.blocklink.pigrid.Fragment.ManualPiSearchFragment;
 import de.blocklink.pigrid.Fragment.PiListFragment;
 import de.blocklink.pigrid.Helper.PrefManager;
 import de.blocklink.pigrid.Helper.UrlHelper;
@@ -91,24 +92,20 @@ public class MainActivity extends AppCompatActivity
 
         } else if (menuId == R.id.piGridShop) {
             callWebView(UrlHelper.shopUrl);
-
         } else if (menuId == R.id.help) {
             callWebView(UrlHelper.helpUrl);
-
         } else if (menuId == R.id.piSpplier) {
             callFullScreenWebView();
-
         } else if (menuId == R.id.appHelp) {
             prefManager.setHomeBackBtnPressed(true);
             Intent intent = new Intent(this, WelcomeActivity.class);
             startActivity(intent);
-
         } else if (menuId == R.id.about) {
             fragment = new AboutFragment();
-
+        } else if (menuId == R.id.manualSearch) {
+            fragment = new ManualPiSearchFragment();
         } /*else if (menuId == R.id.settings) {
             fragment = new SettingFragment();
-
         }*/
 
         if (fragment != null) {
