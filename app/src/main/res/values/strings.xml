@@ -21,7 +21,7 @@
     <string name="about_app">About App</string>
     <string name="manual_search">Manual Search</string>
 
-    <string name="manual_search_pi">Search Pi Manually</string>
+    <string name="manual_search_pi">Connect</string>
 
     <string name="home_text"> Discover and connect device available in your network! </string>
     <string name="no_device"> There is no any required device in the network </string>

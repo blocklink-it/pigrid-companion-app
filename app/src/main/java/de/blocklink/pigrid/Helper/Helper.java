@@ -6,6 +6,7 @@ import android.widget.EditText;
 
 public class Helper {
 
+    //Helper function to hide keyboard
     public static void hideSoftKeyboard(Activity activity) {
         InputMethodManager inputMethodManager =
                 (InputMethodManager) activity.getSystemService(
@@ -14,6 +15,7 @@ public class Helper {
                 activity.getCurrentFocus().getWindowToken(), 0);
     }
 
+    //Helper function to check text obtained from edit text is empty or not
     public static boolean isEmpty(EditText etText) {
         if (etText.getText().toString().trim().length() > 0)
             return false;

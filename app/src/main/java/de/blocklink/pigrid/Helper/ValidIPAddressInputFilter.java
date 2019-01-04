@@ -2,10 +2,8 @@ package de.blocklink.pigrid.Helper;
 
 import android.text.InputFilter;
 import android.text.Spanned;
-import android.widget.Toast;
 
-import de.blocklink.pigrid.R;
-
+//helper class to validate input as ip address
 public class ValidIPAddressInputFilter implements InputFilter {
 
     @Override

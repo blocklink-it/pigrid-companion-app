@@ -23,7 +23,7 @@ import de.blocklink.pigrid.R;
 public class ManualPiSearchFragment extends Fragment {
 
     private EditText etIP;
-    Button btnManualSearch;
+    private Button btnManualSearch;
 
 
     public ManualPiSearchFragment() {
@@ -83,7 +83,8 @@ public class ManualPiSearchFragment extends Fragment {
         }
     };
 
-    public void setupUI(View view) {
+    // function to detect user touch outside of the edit text
+    private void setupUI(View view) {
 
         // Set up touch listener for non-text box views to hide keyboard.
         if (!(view instanceof EditText)) {
