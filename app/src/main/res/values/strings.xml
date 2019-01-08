@@ -1,7 +1,7 @@
 <resources>
     <string name="version_name">1.0</string>
     <string name="app_name">PiGrid Companion</string>
-    <string name="title_pie_list">Pi Devices</string>
+    <string name="title_pie_list">PiGrid Devices</string>
 
     <!-- for Welcome Activity -->
     <string name="next">NEXT</string>
@@ -77,7 +77,7 @@
     <string name="failed_pi">Something went wrong when searching for the pi.</string>
 
     <string name="page_load_error">Error occurred while loading the page!!</string>
-    <string name="manual_search_msg">Hello User!\n You can use this form to search a PiGrid device in your network if you already know the ip address of your PiGrid device.</string>
+    <string name="manual_search_msg">Hello PiGrid User!\nYou can use this form to connect a PiGrid device in your network if you already know the ip address of it.</string>
 
     <string name="manual_search_et_placeholder">PiGrid device\'s IP</string>
     <string name="manual_search_vmsg1">Please enter the ip address of your PiGrid device.</string>
