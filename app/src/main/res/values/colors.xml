@@ -9,20 +9,20 @@
     <!-- Screens background color-->
     <color name="bg_screen1">#0277bd</color>
     <color name="bg_screen2">#2e7d32</color>
-    <color name="bg_screen3">#ef6c00</color>
-    <color name="bg_screen4">#c873f4</color>
+    <color name="bg_screen3">#00acc1</color>
+    <color name="bg_screen4">#ef6c00</color>
 
     <!-- dots inactive colors -->
     <color name="dot_dark_screen1">#01579b</color>
     <color name="dot_dark_screen2">#1b5e20</color>
-    <color name="dot_dark_screen3">#e65100</color>
-    <color name="dot_dark_screen4">#a854d4</color>
+    <color name="dot_dark_screen3">#007c91</color>
+    <color name="dot_dark_screen4">#e65100</color>
 
     <!-- dots active colors -->
     <color name="dot_light_screen1">#0288d1</color>
     <color name="dot_light_screen2">#388e3c</color>
-    <color name="dot_light_screen3">#f57c00</color>
-    <color name="dot_light_screen4">#e4b5fc</color>
+    <color name="dot_light_screen3">#5ddef4</color>
+    <color name="dot_light_screen4">#f57c00</color>
 
     <array name="array_dot_active">
         <item>@color/dot_light_screen1</item>

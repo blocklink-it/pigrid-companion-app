@@ -33,11 +33,11 @@
     <string name="slide_2_title">Connect</string>
     <string name="slide_2_desc">The integrated detection function automatically finds your PiGrid device in your Wi-Fi and LAN network.</string>
 
-    <string name="slide_3_title">Control</string>
-    <string name="slide_3_desc">Take full control of your PiGrid device and manage your wallet, research and device settings. </string>
+    <string name="slide_3_title">Manual Connect</string>
+    <string name="slide_3_desc">Connect to the PiGrid device manually with ip address in your Wi-Fi and LAN network. </string>
 
-    <string name="slide_4_title">Help</string>
-    <string name="slide_4_desc">You can reset the app data any time!</string>
+    <string name="slide_4_title">Control</string>
+    <string name="slide_4_desc">Take full control of your PiGrid device and manage your wallet, research and device settings.</string>
 
     <string name="reset_msg"> Your application has been Reset ! </string>
 

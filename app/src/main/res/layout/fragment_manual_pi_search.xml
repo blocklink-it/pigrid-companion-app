@@ -29,7 +29,7 @@
             android:digits="0123456789."
             android:hint="@string/manual_search_et_placeholder"
             android:imeOptions="actionDone"
-            android:background="@color/dot_light_screen3"/>
+            android:background="@color/bg_screen3"/>
 
         <Button
             android:id="@+id/btnManualSearch"
